@@ -1,0 +1,73 @@
+/* Photo by Blaz Erzetic on Unsplash */
+
+
+#landing-image {
+  height: 100%;
+  width: 100%;
+}
+/*
+@media only screen and (max-width: 2000px) {
+  #landing-image {
+    height: 1100px;
+    width: 1999px;
+    background-position: center center;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  #landing-image {
+    height: 1100px;
+    width: 1499px;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  #landing-image {
+    height: 1100px;
+    width: 1399px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #landing-image {
+    height: 1100px;
+    width: 1199px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #landing-image {
+    height: 900px;
+    width: 999px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  #landing-image {
+    height: 800px;
+    width: 899px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #landing-image {
+    height: 700px;
+    width: 799px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  #landing-image {
+    height: 600px;
+    width: 699px;
+  }
+}
+
+
+} */
+@media only screen and (max-width: 500px) {
+  #landing-image {
+    height: 400px;
+    width: 499px;
+  }
+}

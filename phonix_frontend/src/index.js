@@ -1,31 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDom from "react-dom";
+import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import { Provider } from 'react-redux';
-import thunkMiddleware from 'redux-thunk';
-import { reducer as formReducer } from 'redux-form';
-import * as serviceWorker from './serviceWorker';
 
-import userUpdate from './reducers/userReducer';
+import * as serviceWorker from "./serviceWorker";
 
-import './styles/tailwind.css';
-import App from './App';
+import "./styles/tailwind.css";
+import configureStore from "./store/configureStore"
+import App from "./App"
 
-const rootReducer = combineReducers({
-  user: userUpdate,
-  form: formReducer
-});
+const store = configureStore();
 
-const store = createStore(
-  rootReducer,
-  compose(
-    applyMiddleware(thunkMiddleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-);
-
-ReactDOM.render(
+ReactDom.render (
   <Provider store={store}>
     <Router>
       <App />

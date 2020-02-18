@@ -21,7 +21,7 @@ class Nav extends Component {
   };
 
   render() {
-    const menuClass = classNames(["px-2", "pt-2", "pb-4", "sm:flex"], {
+    const menuClass = classNames(["px-4", "pt-2", "pb-4", "sm:flex"], {
       block: this.state.isOpen,
       hidden: !this.state.isOpen
     });

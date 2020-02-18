@@ -8,10 +8,7 @@ const initialState = {
   isLoggedIn: false
 };
 
-export default function userUpdate(state = initialState, {
-  type,
-  payload
-}) {
+export default function userAuth(state = initialState, { type, payload }) {
   switch (type) {
     case authTypes.USER_LOGGING_IN:
       return {
@@ -22,8 +19,8 @@ export default function userUpdate(state = initialState, {
     case authTypes.USER_LOGGED_IN:
       return {
         data: payload,
-          isLoading: false,
-          isLoggedIn: true
+        isLoading: false,
+        isLoggedIn: true
       };
 
     case authTypes.USER_LOGGED_OUT:
@@ -32,7 +29,7 @@ export default function userUpdate(state = initialState, {
     case authTypes.USER_REGISTERED:
       return {
         data: payload,
-          isLoggedIn: true
+        isLoggedIn: true
       };
     default:
       return state;
