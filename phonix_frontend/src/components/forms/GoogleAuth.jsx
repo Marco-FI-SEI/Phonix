@@ -12,50 +12,47 @@ class GoogleAuth extends Component {
           scope: "email"
         })
         .then(() => {
+          window.gapi.load("signin2", () => {
+            const options = {
+              width: 200,
+              height: 100,
+            };
+            window.gapi.signin2.render("g-signin2", options);
+          });
           this.auth = window.gapi.auth2.getAuthInstance();
-          this.handleAuthChange(this.auth.isSignedIn.get());
-          this.auth.isSignedIn.listen(this.handleAuthChange);
+          this.checkAuthStatus(this.auth.isSignedIn.get());
+          this.auth.isSignedIn.listen(this.checkAuthStatus);
         });
     });
   }
 
-  handleAuthChange = isSignedIn => {
-    isSignedIn
-      ? this.props.signIn(this.auth.currentUser.get().getId())
-      : this.props.signOut();
-  };
+  checkAuthStatus = isSignedIn => {
+    if (isSignedIn) {
+      const user = this.auth.currentUser.get();
+      const userProfile = user.getBasicProfile();
 
-  handleAuthClick = e => {
-    e.target.name === "signIn" ? this.auth.signIn() : this.auth.signOut();
-  };
+      this.props.signIn(userProfile.getId());
+    } else {
+      this.props.signOut();
+    }
+  }
 
-  renderAuthButton = () => {
-    if (this.props.isSignedIn === null) {
-      return null;
-    } else if (this.props.isSignedIn) {
-      return (
-        <button onClick={this.handleAuthClick}
-          name="signOut"
+  handleSignOut = () => {
+    this.auth.signOut();
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="g-signin2"></div>
+        <button
+          onClick={this.handleSignOut}
           className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
         >
           Sign Out
         </button>
-      );
-    } else {
-      return (
-        <button
-          onClick={this.handleAuthClick}
-          name="signIn"
-          className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-        >
-          Sign In
-        </button>
-      );
-    }
-  };
-
-  render() {
-    return <div>{ this.renderAuthButton() }</div>;
+      </div>
+    );
   }
 }
 

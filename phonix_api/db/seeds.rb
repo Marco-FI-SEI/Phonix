@@ -1,1 +1,1 @@
-user1 = User.create!(first_name: "Joe", last_name: "Bloggs", username: "joeblogs101", email: "joe@bloggs.com", password: "123", password_confirmation: "123", location: "London", experience: 0, bio: "")
+
