@@ -16,12 +16,18 @@ export const SERVER_STATUS_MESSAGES = {
 /* AUTH */
 export const AUTH_ACTION_TYPES = {
   SIGN_IN: "SIGN_IN",
-  SIGN_OUT: "SIGN_OUT"
+  SIGN_OUT: "SIGN_OUT",
+  VALIDATE_TOKEN_PENDING: "VALIDATE_TOKEN_PENDING",
+  VALIDATE_TOKEN_SUCCESS: "VALIDATE_TOKEN_SUCCESS",
+  VALIDATE_TOKEN_ERROR: "VALIDATE_TOKEN_ERROR"
 };
 
-
 /* STATE */
-export const INITIAL_STATE = {
+export const INITIAL_AUTH_STATE = {
   isSignedIn: null,
-  userId: null
+  userId: null,
+  pending: false,
+  error: null,
+  message: null,
+  idToken: null
 };

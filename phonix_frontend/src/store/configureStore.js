@@ -6,11 +6,11 @@ import {
 } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
-import googleAuthReducer from "../reducers/googleAuthReducer";
+import { authReducer } from "../reducers/googleAuthReducer";
 
 const configureStore = () => {
   const rootReducer = combineReducers({
-    googleAuth: googleAuthReducer,
+    googleAuth: authReducer,
   });
 
   const store = createStore(

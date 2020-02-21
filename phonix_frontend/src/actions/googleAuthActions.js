@@ -1,5 +1,13 @@
-import { AUTH_ACTION_TYPES } from "../config/constants";
-const { SIGN_IN, SIGN_OUT } = AUTH_ACTION_TYPES;
+import {
+  AUTH_ACTION_TYPES
+} from "../config/constants";
+const {
+  SIGN_IN,
+  SIGN_OUT,
+  VALIDATE_TOKEN_PENDING,
+  VALIDATE_TOKEN_SUCCESS,
+  VALIDATE_TOKEN_ERROR
+} = AUTH_ACTION_TYPES;
 
 const signIn = id => {
   return {
@@ -7,6 +15,28 @@ const signIn = id => {
     payload: id
   };
 };
+
+const validateTokenPending = idToken => {
+  return {
+    type: VALIDATE_TOKEN_PENDING,
+    payload: idToken
+  }
+}
+
+const validateTokenSuccess = () => {
+  return {
+    type: VALIDATE_TOKEN_SUCCESS,
+    payload: "Success"
+  }
+}
+
+const validateTokenError = error => {
+  return {
+    type: VALIDATE_TOKEN_ERROR,
+    payload: "Error",
+    error: error
+  }
+}
 
 const signOut = () => {
   return {
@@ -17,4 +47,7 @@ const signOut = () => {
 export {
   signIn,
   signOut,
-}
+  validateTokenPending,
+  validateTokenSuccess,
+  validateTokenError
+};

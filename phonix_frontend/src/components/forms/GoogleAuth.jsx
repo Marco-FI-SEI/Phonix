@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { signIn, signOut } from "../../actions/googleAuthActions";
+import validateGoogleIdToken from "../../adapters/validateGoogleIdToken";
 
 class GoogleAuth extends Component {
   componentDidMount() {
@@ -30,7 +31,9 @@ class GoogleAuth extends Component {
     if (isSignedIn) {
       const user = this.auth.currentUser.get();
       const userProfile = user.getBasicProfile();
+      const idToken = user.getAuthResponse().id_token;
 
+      this.props.validateGoogleIdToken(idToken);
       this.props.signIn(userProfile.getId());
     } else {
       this.props.signOut();
@@ -58,11 +61,13 @@ class GoogleAuth extends Component {
 
 const mapStateToProps = state => {
   return {
-    isSignedIn: state.googleAuth.isSignedIn
+    isSignedIn: state.googleAuth.isSignedIn,
+    token: state.googleAuth.id_token
   };
 };
 
-export default connect(mapStateToProps,{
+export default connect(mapStateToProps, {
   signIn,
-  signOut
+  signOut,
+  validateGoogleIdToken
 })(GoogleAuth);
