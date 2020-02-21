@@ -1,13 +1,16 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import {
+  createStore,
+  combineReducers,
+  applyMiddleware,
+  compose
+} from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import { reducer as formReducer } from 'redux-form';
 
-import userAuth from '../reducers/userReducer';
+import googleAuthReducer from "../reducers/googleAuthReducer";
 
 const configureStore = () => {
   const rootReducer = combineReducers({
-    user: userAuth,
-    form: formReducer
+    googleAuth: googleAuthReducer,
   });
 
   const store = createStore(

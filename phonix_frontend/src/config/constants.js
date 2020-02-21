@@ -14,14 +14,14 @@ export const SERVER_STATUS_MESSAGES = {
 };
 
 /* AUTH */
-export const AUTH_FORMS = {
-  LOGIN: "login",
-  REGISTER: "register"
+export const AUTH_ACTION_TYPES = {
+  SIGN_IN: "SIGN_IN",
+  SIGN_OUT: "SIGN_OUT"
 };
 
-export const AUTH_ACTION_TYPES = {
-  USER_LOGGING_IN: "USER_LOGGING_IN",
-  USER_LOGGED_IN: "USER_LOGGED_IN",
-  USER_LOGGED_OUT: "USER_LOGGED_OUT",
-  USER_REGISTERED: "USER_REGISTERED",
+
+/* STATE */
+export const INITIAL_STATE = {
+  isSignedIn: null,
+  userId: null
 };

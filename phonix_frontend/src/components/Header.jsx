@@ -1,17 +1,12 @@
 import React, { Fragment, Component } from "react";
+import GoogleAuth from "./forms/GoogleAuth";
 
-import {
-  LogoLink,
-  LoginLink,
-  RegisterLink,
-  LogoutLink,
-  Username
-} from "../config/links";
+import { LogoLink } from "../config/links";
 
 // conditionally apply CSS classes
 const classNames = require("classnames");
 
-class Nav extends Component {
+class Header extends Component {
   state = {
     isOpen: false
   };
@@ -28,8 +23,8 @@ class Nav extends Component {
 
     return (
       <Fragment>
-        <header className="bg-gray-900 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
-          <div className="flex items-center justify-between px-4 py-3 sm:p-0 bg-gray-900">
+        <header className="sm:flex sm:justify-between sm:items-center sm:px-8 sm:py-3 bg-landingCream">
+          <div className="flex items-center justify-between px-4 py-3 sm:p-0">
             <LogoLink />
             <div className="sm:hidden">
               <button
@@ -60,8 +55,7 @@ class Nav extends Component {
             </div>
           </div>
           <div className={menuClass}>
-            <LoginLink />
-            <RegisterLink />
+            <GoogleAuth />
           </div>
         </header>
       </Fragment>
@@ -69,4 +63,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default Header;
