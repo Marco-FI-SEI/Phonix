@@ -1,4 +1,4 @@
-class Validator < ApplicationRecord
+class Validator
   def initialize(google_client_id)
     @google_client_id = google_client_id
   end
