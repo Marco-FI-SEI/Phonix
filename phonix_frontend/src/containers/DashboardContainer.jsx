@@ -13,9 +13,14 @@ class DashboardContainer extends Component {
   render() {
     return (
       <div>
-        <HeadphoneList headphones={this.props.headphones}/>
+        <div>
+          <HeadphoneList headphones={this.props.headphones} />
+        </div>
+        <div>
+          {this.props.children}
+        </div>
       </div>
-    )
+    );
   }
 };
 
