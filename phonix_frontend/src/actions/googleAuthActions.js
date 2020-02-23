@@ -1,6 +1,7 @@
 import {
   AUTH_ACTION_TYPES
 } from "../config/constants";
+
 const {
   SIGN_IN,
   SIGN_OUT,
@@ -34,7 +35,7 @@ const validateTokenError = error => {
   return {
     type: VALIDATE_TOKEN_ERROR,
     payload: "Error",
-    error: error
+    tokenError: error
   }
 }
 

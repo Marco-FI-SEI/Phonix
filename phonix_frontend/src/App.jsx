@@ -9,7 +9,7 @@ import "./App.css";
 import Header from "./components/Header";
 
 import Homepage from "./components/pages/HomePage";
-import Dashboard from "./components/pages/Dashboard";
+import DashboardContainer from "./containers/DashboardContainer";
 
 class App extends Component {
   render() {
@@ -24,18 +24,17 @@ class App extends Component {
               : <Homepage />
             }
           </Route>
-          <Route path="/dashboard" component={Dashboard}>
+          <Route path="/dashboard" component={DashboardContainer}>
             {
               !this.props.isSignedIn
               ? <Redirect to="/" />
-              : <Dashboard />
+              : <DashboardContainer />
             }
           </Route>
           {/* <Route exact path={"/protected"} component={Protected} /> */}
           {/* <Route path="*" component={NotFoundPage} /> */}
           {/* <Routes /> */}
         </Router>
-        {JSON.stringify(this.props.isSignedIn)}
       </div>
     );
   }

@@ -22,12 +22,19 @@ export const AUTH_ACTION_TYPES = {
   VALIDATE_TOKEN_ERROR: "VALIDATE_TOKEN_ERROR"
 };
 
+/* HEADPHONE ACTIONS */
+export const HEADPHONE_ACTION_TYPES = {
+  LOAD_HEADPHONES_SUCCESS: "LOAD_HEADPHONES_SUCCESS"
+};
+
 /* STATE */
-export const INITIAL_AUTH_STATE = {
+export const INITIAL_APP_STATE = {
   isSignedIn: null,
   userId: null,
-  pending: false,
-  error: null,
-  message: null,
-  idToken: null
+  gOAuthPending: false,
+  tokenError: null,
+  gAuthMessage: null,
+  gAuthIdToken: null,
+  headphones: [],
+  reviews: []
 };

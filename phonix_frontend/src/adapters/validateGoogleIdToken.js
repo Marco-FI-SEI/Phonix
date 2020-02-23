@@ -4,23 +4,22 @@ import {
   validateTokenError
 } from "../actions/googleAuthActions";
 
-import { API_ENDPOINT } from "../config/constants";
+import {
+  API_ENDPOINT
+} from "../config/constants";
+import {
+  makeRequest
+} from "./API";
+
 
 const validateGoogleIdToken = idToken => dispatch => {
   dispatch(validateTokenPending());
 
-  const config = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify({ id_token: idToken })
+  try {
+    makeRequest("POST", `${API_ENDPOINT}tokensignin`, {id_token: idToken})
+  } catch (error) {
+    dispatch(validateTokenError());
   }
-
-  fetch(`${API_ENDPOINT}tokensignin`, config)
-    .then(result => result.json())
-    .then(json => console.log(json));
 }
 
 export default validateGoogleIdToken;

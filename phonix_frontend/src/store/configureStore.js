@@ -7,10 +7,12 @@ import {
 import thunkMiddleware from 'redux-thunk';
 
 import { authReducer } from "../reducers/googleAuthReducer";
+import { headphoneReducer } from "../reducers/headphoneReducer";
 
 const configureStore = () => {
   const rootReducer = combineReducers({
     googleAuth: authReducer,
+    headphoneReducer
   });
 
   const store = createStore(

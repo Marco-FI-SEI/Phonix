@@ -1,5 +1,5 @@
 import {
-  INITIAL_AUTH_STATE as initialState
+  INITIAL_APP_STATE as initialState
 } from "../config/constants";
 import {
   AUTH_ACTION_TYPES
@@ -13,11 +13,11 @@ const {
   VALIDATE_TOKEN_ERROR
 } = AUTH_ACTION_TYPES;
 
-export function authReducer(state = initialState, {
+export const authReducer = (state = initialState, {
   type,
   payload,
   error
-}) {
+}) => {
   switch (type) {
     case SIGN_IN:
       return {
@@ -34,20 +34,20 @@ export function authReducer(state = initialState, {
     case VALIDATE_TOKEN_PENDING:
       return {
         ...state,
-        pending: true,
+        gOAuthPending: true,
           idToken: payload
       };
     case VALIDATE_TOKEN_SUCCESS:
       return {
         ...state,
-        pending: false,
-          message: payload
+        gOAuthPending: false,
+          gAuthMessage: payload
       };
     case VALIDATE_TOKEN_ERROR:
       return {
         ...state,
-        pending: false,
-          message: payload,
+        gOAuthPending: false,
+          gAuthMessage: payload,
           error: error
       };
     default:
