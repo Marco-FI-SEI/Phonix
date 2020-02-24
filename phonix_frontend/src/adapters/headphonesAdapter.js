@@ -6,5 +6,8 @@ export const loadHeadphones = () => dispatch => {
   return makeRequest("GET", `${API_ENDPOINT}headphones`)
     .then(headphones => {
       dispatch(loadHeadphonesSuccess(headphones))
+    })
+    .catch(error => {
+      console.log(error);
     });
 };

@@ -1,15 +1,18 @@
 import React from "react";
-import cuid from "cuid";
+import { Link } from "react-router-dom";
+// import cuid from "cuid";
 
 const HeadphoneList = ({ headphones }) => {
   return (
     <ul>
       {headphones.map(headphone => {
         return (
-          <li key={cuid()}>
+          <li key={headphone.id}>
             <div>
               <h3>
-                {headphone.model} - {headphone.manufacturer}
+                <Link to={`/dashboard/${headphone.id}`}>
+                  {headphone.model} - {headphone.manufacturer} - {headphone.id}
+                </Link>
               </h3>
             </div>
           </li>

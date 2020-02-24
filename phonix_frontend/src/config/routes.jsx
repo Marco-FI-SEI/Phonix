@@ -1,8 +1,9 @@
 import React, { Fragment } from "react";
 import { Route, Redirect } from "react-router-dom";
-import Homepage from "../components/pages/HomePage";
-import DashboardContainer from "../containers/DashboardContainer";
 import Header from "../components/Header";
+import DashboardContainer from "../containers/DashboardContainer";
+import Homepage from "../components/pages/HomePage";
+import HeadphonePage from "../components/pages/HeadphonePage.jsx";
 
 export const Routes = props => {
   return (
@@ -13,6 +14,7 @@ export const Routes = props => {
       </Route>
       <Route path="/dashboard" component={DashboardContainer}>
         {!props.isSignedIn ? <Redirect to="/" /> : <DashboardContainer />}
+        <Route path="dashboard/:headphone_id" component={HeadphonePage}></Route>
       </Route>
     </Fragment>
   );
