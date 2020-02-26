@@ -1,18 +1,21 @@
 import React from "react";
 import ReactDom from "react-dom";
 import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import * as serviceWorker from "./serviceWorker";
 
 import "./styles/tailwind.css";
 import configureStore from "./store/configureStore"
-import App from "./App"
+import Routes from "./config/Routes";
 
 const store = configureStore();
 
 ReactDom.render (
   <Provider store={store}>
-    <App />
+    <Router>
+      <Routes />
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

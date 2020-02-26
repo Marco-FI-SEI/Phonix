@@ -1,8 +1,8 @@
-import { REVIEW_ACTION_TYPES as types } from "../config/constants";
+import { ACTIONS as actions } from "../config/constants";
 
-const { LOAD_REVIEWS_SUCCESS } = types;
+const { LOAD_REVIEWS_SUCCESS } = actions;
 
-export const loadReviewsSuccess = (reviews) => {
+export const loadReviewsSuccess = reviews => {
   return {
     type: LOAD_REVIEWS_SUCCESS,
     payload: reviews

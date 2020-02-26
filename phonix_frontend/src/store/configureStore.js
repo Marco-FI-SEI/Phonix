@@ -1,24 +1,22 @@
 import {
   createStore,
-  combineReducers,
+  // combineReducers,
   applyMiddleware,
   compose
 } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
-import { authReducer } from "../reducers/googleAuthReducer";
-import { headphoneReducer } from "../reducers/headphoneReducer";
-import { reviewReducer } from "../reducers/reviewReducer";
+import {
+  forumReducer as forum
+} from "../reducers/forumReducer";
 
 const configureStore = () => {
-  const rootReducer = combineReducers({
-    googleAuth: authReducer,
-    headphoneReducer,
-    reviewReducer
-  });
+  // const rootReducer = combineReducers({
+  //   forum
+  // });
 
   const store = createStore(
-    rootReducer,
+    forum,
     compose(
       applyMiddleware(thunkMiddleware),
       window.__REDUX_DEVTOOLS_EXTENSION__ &&

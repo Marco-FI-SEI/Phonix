@@ -1,5 +1,4 @@
 import React, { Fragment, Component } from "react";
-import GoogleAuth from "./forms/GoogleAuth";
 
 import { LogoLink } from "../config/links";
 
@@ -54,9 +53,7 @@ class Header extends Component {
               </button>
             </div>
           </div>
-          <div className={menuClass}>
-            <GoogleAuth />
-          </div>
+          <div className={menuClass}></div>
         </header>
       </Fragment>
     );

@@ -6,7 +6,7 @@ export const headphoneReducer = (state = appState, {type, payload}) => {
     case types.LOAD_HEADPHONES_SUCCESS:
       return {
         ...state,
-        headphones: payload
+        headphonesCollection: payload
       }
     default:
       return state;

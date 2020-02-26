@@ -1,9 +1,13 @@
-import { API_ENDPOINT } from "../config/constants";
-import { makeRequest } from "../adapters/API";
+import {
+  API_ENDPOINT
+} from "../config/constants";
+import ApiRequest from "./ApiRequest";
 import { loadReviewsSuccess } from "../actions/reviewActions";
 
-export const loadReviews = () => dispatch => {
-  return makeRequest("GET", `${API_ENDPOINT}reviews`)
+const api = new ApiRequest();
+
+export const loadReviews = headphoneId => dispatch => {
+  return api.makeRequest("GET", `${API_ENDPOINT}headphones/${headphoneId}/reviews`)
     .then(reviews => {
       dispatch(loadReviewsSuccess(reviews))
     })

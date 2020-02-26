@@ -6,7 +6,7 @@ export const reviewReducer = (state = appState, {type, payload}) => {
     case types.LOAD_REVIEWS_SUCCESS:
       return {
         ...state,
-        reviews: payload
+        headphoneReviewsCollection: payload
       }
     default:
       return state;

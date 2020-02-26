@@ -2,7 +2,7 @@ class Api::V1::ReviewsController < ApplicationController
   before_action :set_review, except: [:index, :create]
 
   def index
-    render json: Review.all
+    render json: Review.where(:headphone_id => params[:headphone_id])
   end
 
   def show
