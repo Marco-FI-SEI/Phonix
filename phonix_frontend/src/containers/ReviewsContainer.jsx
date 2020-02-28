@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import ReviewList from '../components/reviews/ReviewList';
-import { loadReviews } from "../adapters/reviewsAdapter";
-
+import { loadReviews, deleteReview } from "../adapters/reviewsAdapter";
 
 class ReviewsContainer extends Component {
   componentDidMount() {
@@ -12,30 +11,25 @@ class ReviewsContainer extends Component {
   }
 
   render() {
+    const { headphone, reviews, deleteReview } = this.props;
+
     return (
       <div>
-        <ReviewList
-          reviews={this.props.reviews}
-          headphoneId={this.headphoneId}
-        />
+        <ReviewList reviews={reviews} />
+        {/* <ReviewList
+          reviews={reviews}
+          headphoneId={headphone.id}
+          deleteReview={deleteReview}
+        /> */}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  // console.log(state)
-  // let relevantReviews = [];
-
-  // if (state.reviews > 0) {
-  //   relevantReviews = state.reviews.filter(review => {
-  //     return review.headphone_id === ownProps.headphone.id;
-  //   });
-  // }
-
+const mapStateToProps = ({forum}) => {
   return {
-    reviews: state.reviews
+    reviews: forum.reviews
   };
 }
 
-export default connect(mapStateToProps, { loadReviews })(ReviewsContainer)
+export default connect(mapStateToProps, { loadReviews })(ReviewsContainer);

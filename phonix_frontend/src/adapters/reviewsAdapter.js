@@ -15,3 +15,14 @@ export const loadReviews = headphoneId => dispatch => {
       console.log(error);
     });
 };
+
+
+export const deleteReview = (reviewId, headphoneId) => dispatch => {
+  return api.makeRequest("DELETE", `${API_ENDPOINT}headphones/${headphoneId}/reviews/${reviewId}`)
+    .then(response => {
+      dispatch(deleteReview(response.reviewId))
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};

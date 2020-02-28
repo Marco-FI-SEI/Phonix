@@ -10,9 +10,7 @@ class HeadphoneList extends Component {
     });
     return (
       <Fragment>
-        <div>
-        </div>
-        <ul className="container mx-auto block border-solid border-2">{headphoneList}</ul>
+        <ul className="block border-solid border-2">{headphoneList}</ul>
       </Fragment>
     )
   }

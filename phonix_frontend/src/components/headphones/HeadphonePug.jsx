@@ -21,24 +21,24 @@
 //   }
 // };
 
-const mapStateToProps = (state, ownProps) => {
-  let headphone = {
-    id: null,
-    model: "",
-    manufacturer: ""
-  };
+// const mapStateToProps = (state, ownProps) => {
+//   let headphone = {
+//     id: null,
+//     model: "",
+//     manufacturer: ""
+//   };
 
-  const headphoneId = ownProps.match.params.headphone_id;
-  const headphones = state.headphones.headphonesCollection;
+//   const headphoneId = ownProps.match.params.headphone_id;
+//   const headphones = state.headphones.headphonesCollection;
 
-  if (headphones.length > 0) {
-    headphone = {...headphones.find(headphone => headphone.id === headphoneId)}
-  }
+//   if (headphones.length > 0) {
+//     headphone = {...headphones.find(headphone => headphone.id === headphoneId)}
+//   }
 
-  return {
-    headphone,
-    reviews: state.reviews.headphoneReviewsCollection
-  };
-};
+//   return {
+//     headphone,
+//     reviews: state.reviews.headphoneReviewsCollection
+//   };
+// };
 
-export default connect(mapStateToProps, { loadReviews })(HeadphonePage);
+// export default connect(mapStateToProps, { loadReviews })(HeadphonePage);

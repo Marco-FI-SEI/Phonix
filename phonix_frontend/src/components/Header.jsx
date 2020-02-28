@@ -22,7 +22,7 @@ class Header extends Component {
 
     return (
       <Fragment>
-        <header className="sm:flex sm:justify-between sm:items-center sm:px-8 sm:py-3 bg-landingCream">
+        <header className="h-10% sticky top-0 sm:flex sm:justify-between sm:items-center sm:px-8 sm:py-3 bg-landingCream">
           <div className="flex items-center justify-between px-4 py-3 sm:p-0">
             <LogoLink />
             <div className="sm:hidden">

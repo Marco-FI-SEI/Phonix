@@ -12,7 +12,10 @@ class HeadphoneListItem extends Component {
         key={headphone.id}
       >
         <Link to={`/headphones/${headphone.id}`}>
-          {headphone.manufacturer} - {headphone.model}
+          <div>
+            <img className="inline-block px-8 py-5" src="https://img.icons8.com/nolan/96/headphones.png" />
+            <h3 className="inline-block">{headphone.manufacturer} - {headphone.model}</h3>
+          </div>
         </Link>
       </li>
     );
@@ -21,7 +24,3 @@ class HeadphoneListItem extends Component {
 
 export default HeadphoneListItem;
 
-// <div>
-//   <h3>{headphone.manufacturer} - {headphone.model}</h3>
-//   <ReviewsContainer headphone={headphone} />
-// </div>

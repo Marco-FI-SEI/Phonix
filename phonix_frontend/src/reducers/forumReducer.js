@@ -20,16 +20,18 @@ export const forumReducer = (state = initialState, {
   type,
   payload
 }) => {
+  console.log(payload)
+
   switch (type) {
     case LOAD_HEADPHONES_SUCCESS:
       return {
         ...state,
-        headphones: payload
+        headphones: [...payload]
       };
     case LOAD_REVIEWS_SUCCESS:
       return {
         ...state,
-        reviews: payload
+        reviews: [...payload]
       };
     case ADD_HEADPHONE:
       const headphone = {
@@ -44,23 +46,27 @@ export const forumReducer = (state = initialState, {
     case DELETE_HEADPHONE:
       const headphones = state.headphones.filter(headphone => headphone.id !== payload.id);
       return {
-        ...state, headphones
+        ...state,
+        headphones
       };
     case ADD_REVIEW:
       const review = {
         id: uuid(),
         title: payload.title,
         body: payload.body,
-        headphoneId: payload.review.headphoneId
+        headphoneId: payload.headphoneId
       };
       return {
         ...state,
         reviews: [...state.reviews, review]
       }
       case DELETE_REVIEW:
-        const reviews = state.reviews.filter(review => review.id !== payload.id);
+        console.log(payload)
+        const reviews = state.reviews.filter(review => review.id !== payload);
+
         return {
-          ...state, reviews
+          ...state,
+          reviews
         };
       default:
         return state;

@@ -21,13 +21,13 @@ class Api::V1::ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    render json: { message: "Review deleted!" }, status: 200
+    render json: { message: "Review deleted!", reviewId: @review[:id] }, status: 200
   end
 
   private
 
   def set_review
-    @review = Review.find(params[:review][:id])
+    @review = Review.find_by!(id: params[:id])
   end
 
   def review_params

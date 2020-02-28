@@ -1,17 +1,48 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 // import { Link } from "react-router-dom";
 
-// import ReviewsContainer from "../../containers/ReviewsContainer";
+import ReviewsContainer from "../../containers/ReviewsContainer";
 
 class HeadphonePage extends Component {
   render() {
+
+    const { headphone } = this.props;
     return (
-      <div>
-        <h1>{this.props.headphone.manufacturer} {this.props.headphone.model}</h1>
+      <div className="h-full mx-auto rounded overflow-hidden shadow-lg">
+        <img
+          className="w-full"
+          src="/1_820.jpg"
+          alt="Sunset in the mountains"
+        />
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl mb-2">
+            <h1>{headphone.manufacturer} {headphone.model}</h1>
+          </div>
+          <p className="text-gray-700 text-base">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Voluptatibus quia, nulla! Maiores et perferendis eaque,
+            exercitationem praesentium nihil.
+          </p>
+        </div>
+        <div className="px-6 py-4">
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+            #photography
+          </span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+            #travel
+          </span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
+            #winter
+          </span>
+        </div>
+        <div className="container">
+          <h2>Reviews</h2>
+          <ReviewsContainer headphone={headphone} />
+        </div>
       </div>
-    )
+    );
   }
 }
 
@@ -23,22 +54,17 @@ const mapStateToProps = (state, ownProps) => {
   };
 
   const headphoneId = ownProps.match.params.headphoneId;
-  const headphones = state.headphones;
-
-  console.log(headphoneId)
+  const headphones = state.forum.headphones;
 
   if (headphones.length > 0) {
-    headphone = { ...headphones.find(headphone => headphone.id == headphoneId) }
+    headphone = {
+      ...headphones.find(headphone => headphone.id == headphoneId)
+    };
   }
 
   return {
-    headphone,
+    headphone
   };
-  // return {
-  //   headphone,
-  //   reviews: state.reviews.headphoneReviewsCollection
-  // };
 };
 
 export default connect(mapStateToProps)(HeadphonePage);
-// export default connect(mapStateToProps, { loadReviews })(HeadphonePage);

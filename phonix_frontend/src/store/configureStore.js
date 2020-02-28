@@ -1,9 +1,10 @@
 import {
   createStore,
-  // combineReducers,
+  combineReducers,
   applyMiddleware,
   compose
 } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 import thunkMiddleware from 'redux-thunk';
 
 import {
@@ -11,12 +12,13 @@ import {
 } from "../reducers/forumReducer";
 
 const configureStore = () => {
-  // const rootReducer = combineReducers({
-  //   forum
-  // });
+  const rootReducer = combineReducers({
+    forum,
+    form: formReducer
+  });
 
   const store = createStore(
-    forum,
+    rootReducer,
     compose(
       applyMiddleware(thunkMiddleware),
       window.__REDUX_DEVTOOLS_EXTENSION__ &&

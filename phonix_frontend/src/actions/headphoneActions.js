@@ -5,8 +5,6 @@ import {
 const {
   ADD_HEADPHONE,
   DELETE_HEADPHONE,
-  ADD_REVIEW,
-  DELETE_REVIEW,
   LOAD_HEADPHONES_SUCCESS
 } = actions;
 
@@ -17,7 +15,7 @@ export const loadHeadphonesSuccess = headphones => {
   }
 }
 
-export const addHeadphone = headphone => {
+export const addHeadphoneSuccess = headphone => {
   return {
     type: ADD_HEADPHONE,
     payload: headphone
@@ -28,19 +26,5 @@ export const deleteHeadphone = headphoneId => {
   return {
     type: DELETE_HEADPHONE,
     payload: headphoneId
-  }
-}
-
-export const addReview = review => {
-  return {
-    type: ADD_REVIEW,
-    payload: review
-  }
-}
-
-export const deleteReview = reviewId => {
-  return {
-    type: DELETE_REVIEW,
-    payload: reviewId
   }
 }
