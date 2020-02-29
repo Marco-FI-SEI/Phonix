@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { loadHeadphones } from "../adapters/headphonesAdapter";
+import { fetchHeadphones } from "../actions/headphoneActions";
 import HeadphoneList from "../components/headphones/HeadphoneList";
 import { SearchBar } from "../components/headphones/SearchBar";
 import { Button } from "../components/common/Button";
@@ -17,7 +17,7 @@ class HeadphonesContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.loadHeadphones();
+    this.props.fetchHeadphones();
   }
 
   handleSearch = e => {
@@ -38,15 +38,15 @@ class HeadphonesContainer extends Component {
     return (
       <div className="h-full container mx-auto">
         <div className="sticky top-0 h-10% grid grid-cols-2">
-          <div className="flex items-center border-solid border-2 px-8">
+          <div className="flex items-center px-1">
             <SearchBar
               placeholder="Search Headphones..."
               handleSearch={this.handleSearch}
             />
             </div>
-            <div className="flex flex-row-reverse items-center border-solid border-2 px-8">
+            <div className="flex flex-row-reverse items-center px-8">
               <Link to={`/headphones/new`}>
-                <Button />
+                <Button btnText="+ Headphone" />
               </Link>
             </div>
         </div>
@@ -64,6 +64,6 @@ const mapStateToProps = ({forum}) => {
   };
 };
 
-export default connect(mapStateToProps, { loadHeadphones })(
+export default connect(mapStateToProps, { fetchHeadphones })(
   HeadphonesContainer
 );

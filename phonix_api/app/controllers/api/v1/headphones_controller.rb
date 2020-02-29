@@ -21,7 +21,7 @@ class Api::V1::HeadphonesController < ApplicationController
 
   def destroy
     @headphone.destroy
-    render json: { message: "Headphone deleted!" }, status: 200
+    render json: { message: "Headphone deleted!", headphoneId: @headphone[:id] }, status: 200
   end
 
   private

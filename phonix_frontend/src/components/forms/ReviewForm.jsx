@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
+import { TextArea as textarea } from "./TextArea";
 import { InputField as input } from "./InputField";
-import { addHeadphone } from "../../actions/headphoneActions";
+import { addReview } from "../../actions/reviewActions";
 
-class HeadphoneForm extends Component {
+class ReviewForm extends Component {
   onSubmit = formValues => {
-    this.props.addHeadphone(formValues);
+    this.props.addReview(formValues);
   };
 
   render() {
@@ -20,10 +21,13 @@ class HeadphoneForm extends Component {
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         >
           <div className="mb-4">
-            <Field name="model" component={input} label="model" />
+            <Field name="title" component={input} label="Title" />
           </div>
           <div className="mb-6">
-            <Field name="manufacturer" component={input} label="Manufacturer" />
+            <Field name="Body" component={textarea} label="Body" />
+          </div>
+          <div className="mb-4">
+            <Field name="rating" component={input} label="Rating" />
           </div>
           <div>
             <button
@@ -39,7 +43,15 @@ class HeadphoneForm extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  console.log(state)
+
+  return {
+    state
+  }
+}
+
 export default compose(
-  connect(null, { addHeadphone }),
-  reduxForm({ form: "headphone" })
-)(HeadphoneForm);
+  connect(mapStateToProps, { addReview }),
+  reduxForm({ form: "review" })
+)(ReviewForm);

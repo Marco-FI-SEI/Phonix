@@ -7,7 +7,7 @@ import Header from "./components/Header";
 class App extends Component {
   render() {
     return (
-      <div className="h-screen">
+      <div className="h-screen mx-auto min-w-0 max-w-screen-xl" style={{overflowY: `hidden`}}>
         <Router>
           <Header />
           <main className="h-90%">

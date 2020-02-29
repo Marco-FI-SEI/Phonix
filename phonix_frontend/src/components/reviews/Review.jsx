@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { deleteReview } from "../adapters/reviewsAdapter";
+import { deleteReview } from "../../actions/reviewActions";
 
 class Review extends Component {
-  // handleOnClick = () => {
-  //   this.props.deleteReview(this.props.review.id, this.props.headphoneId);
-  // };
   render() {
-    const { review, deleteReview, headphoneId } = this.props;
+    const { review, headphoneId, deleteReview } = this.props;
 
     return (
-      <li key={review.id}>
+      <li className="py-20">
         <div className="grid grid-cols-2">
           <div className="flex items-center border-solid border-2 px-8">
             <p>{review.title}</p>
