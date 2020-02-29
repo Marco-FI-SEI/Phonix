@@ -8,7 +8,7 @@ class Validator
     begin
       @payload = validator.check(token, @google_client_id)
     rescue GoogleIDToken::ValidationError => e
-      report "Cannot validate: #{e}"
+      puts "Cannot validate: #{e}"
     end
   end
 
