@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from "react";
 
 import { LogoLink } from "../config/links";
+import GoogleAuth from "./forms/GoogleAuth";
 
 // conditionally apply CSS classes
 const classNames = require("classnames");
@@ -53,7 +54,9 @@ class Header extends Component {
               </button>
             </div>
           </div>
-          <div className={menuClass}></div>
+          <div className={menuClass}>
+            <GoogleAuth />
+          </div>
         </header>
       </Fragment>
     );

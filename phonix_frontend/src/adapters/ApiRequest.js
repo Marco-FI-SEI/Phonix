@@ -5,10 +5,11 @@ class ApiRequest {
     const config = this.buildConfig(method, body);
 
     try {
-      result = await fetch(url, config)
-      result = result.json()
+      result = await fetch(url, config);
+      result = result.json();
     } catch (e) {
       console.log(e)
+      result = e;
     };
 
     return result;

@@ -5,6 +5,7 @@ import {
   compose
 } from 'redux';
 import { reducer as formReducer } from 'redux-form';
+import { authReducer } from "../reducers/googleAuthReducer";
 import thunkMiddleware from 'redux-thunk';
 
 import {
@@ -14,6 +15,7 @@ import {
 const configureStore = () => {
   const rootReducer = combineReducers({
     forum,
+    googleAuth: authReducer,
     form: formReducer
   });
 
