@@ -9,7 +9,8 @@ import ApiRequest from "../adapters/ApiRequest";
 const {
   LOAD_REVIEWS,
   ADD_REVIEW,
-  DELETE_REVIEW
+  DELETE_REVIEW,
+  UPDATE_REVIEW
 } = actions;
 
 const api = new ApiRequest();
@@ -24,8 +25,8 @@ export const fetchReviews = headphoneId => dispatch => {
     })
 }
 
-export const addReview = (review, headphoneId) => dispatch => {
-  return api.makeRequest("POST", `${API_ENDPOINT}headphones/${headphoneId}/reviews`, review)
+export const addReview = review => dispatch => {
+  return api.makeRequest("POST", `${API_ENDPOINT}headphones/${review.headphone_id}/reviews`, review)
     .then(review => {
       dispatch({
         type: ADD_REVIEW,
@@ -41,5 +42,16 @@ export const deleteReview = (reviewId, headphoneId) => dispatch => {
         type: DELETE_REVIEW,
         payload: response.reviewId
       })
+    })
+}
+
+export const editReview = (reviewId, headphoneId) => {
+  return api.makeRequest("PUT", `${API_ENDPOINT}headphones/${headphoneId}/reviews/${reviewId}`)
+    .then(response => {
+      console.log(response)
+      // dispatch({
+      //   type: UPDATE_REVIEW,
+      //   payload: response
+      // })
     })
 }

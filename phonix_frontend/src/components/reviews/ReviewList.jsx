@@ -5,11 +5,11 @@ import Review from "./Review";
 class ReviewList extends Component {
   render() {
 
-    const { reviews, headphoneId } = this.props;
+    const { reviews, headphone } = this.props;
 
     const headphoneReviews = reviews.map(review => {
       return (
-        <Review key={review.id} review={review} headphoneId={headphoneId}/>
+        <Review key={review.id} review={review} headphone={headphone}/>
       );
     });
 

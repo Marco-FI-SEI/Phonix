@@ -10,13 +10,11 @@ class Api::V1::HeadphonesController < ApplicationController
   end
 
   def create
-    headphone = Headphone.create!(headphone_params)
-    render json: headphone
+    render json: Headphone.create!(headphone_params)
   end
 
   def update
-    @headphone.update!(headphone_params)
-    render json: @headphone
+    render json: @headphone.update!(headphone_params)
   end
 
   def destroy

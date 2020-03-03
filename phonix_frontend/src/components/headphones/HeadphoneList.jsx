@@ -6,7 +6,12 @@ class HeadphoneList extends Component {
   render() {
     const { headphones } = this.props;
     const headphoneList = headphones.map(headphone => {
-      return <HeadphoneListItem key={headphone.id} headphone={headphone} />;
+      return (
+        <HeadphoneListItem
+          key={headphone.id}
+          headphone={headphone}
+        />
+      );
     });
     return (
       <Fragment>

@@ -26,6 +26,7 @@ class GoogleAuth extends Component {
         });
     });
   }
+
   checkAuthStatus = isSignedIn => {
     if (isSignedIn) {
       const user = this.auth.currentUser.get();
@@ -38,21 +39,30 @@ class GoogleAuth extends Component {
       this.props.signOut();
     }
   };
+
   handleSignOut = () => {
     this.auth.signOut();
+    this.checkAuthStatus(this.props.isSignedIn);
   };
-  render() {
-    return (
-      <div>
-        <div className="g-signin2"></div>
+
+  renderAuthButton = () => {
+    if (this.props.isSignedIn) {
+      return (
         <button
           onClick={this.handleSignOut}
+          id="signOut"
           className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
         >
           Sign Out
         </button>
-      </div>
-    );
+      );
+    } else {
+      return <div className="g-signin2"></div>;
+    }
+  };
+
+  render() {
+    return <div>{this.renderAuthButton()}</div>;
   }
 }
 

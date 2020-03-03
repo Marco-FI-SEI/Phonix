@@ -10,10 +10,17 @@ class HeadphonePage extends Component {
 
     const { headphone } = this.props;
     return (
-      <div className="h-screen container mx-auto rounded overflow-hidden shadow-lg py-20">
+      <div className="h-screen container mx-auto rounded  shadow-lg">
+        <img
+          className="w-full sticky top-0"
+          src="/1_820.jpg"
+          alt="headphone banner"
+        />
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">
-            <h1>{headphone.manufacturer} {headphone.model}</h1>
+            <h1>
+              {headphone.manufacturer} {headphone.model}
+            </h1>
           </div>
           <p className="text-gray-700 text-base">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -21,12 +28,6 @@ class HeadphonePage extends Component {
             exercitationem praesentium nihil.
           </p>
         </div>
-        <img
-          className="w-full sticky top-0"
-          src="/1_820.jpg"
-          alt="Sunset in the mountains"
-        />
-
         <div className="px-6 py-4">
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
             #photography
@@ -38,9 +39,7 @@ class HeadphonePage extends Component {
             #winter
           </span>
         </div>
-        <div className="container mx-auto">
-          <ReviewsContainer headphone={headphone} />
-        </div>
+        <ReviewsContainer headphone={headphone} />
       </div>
     );
   }

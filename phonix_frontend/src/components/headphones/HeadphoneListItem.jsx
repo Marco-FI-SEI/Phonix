@@ -1,8 +1,7 @@
 import React, { Component } from "react";
+
 import { Link } from "react-router-dom";
 import { Button } from "../common/Button";
-
-// import ReviewsContainer from "../../containers/ReviewsContainer";
 
 class HeadphoneListItem extends Component {
   render() {
@@ -26,7 +25,9 @@ class HeadphoneListItem extends Component {
             </div>
           </Link>
           <div className="flex flex-row-reverse items-center px-8">
-            <Link to={`/reviews/new`}>
+            <Link to={{
+              pathname: `/reviews/new`,
+              state: { headphone: headphone }}}>
               <Button btnText="+ Review" />
             </Link>
           </div>

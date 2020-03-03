@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { Button } from "../common/Button";
 
-import { deleteReview } from "../../actions/reviewActions";
+import { editReview, deleteReview } from "../../actions/reviewActions";
 
 class Review extends Component {
   render() {
-    const { review, headphoneId, deleteReview } = this.props;
+    const { review, headphone, deleteReview } = this.props;
 
     return (
       <li className="py-20">
@@ -14,9 +16,17 @@ class Review extends Component {
             <p>{review.title}</p>
           </div>
           <div className="flex flex-row-reverse items-center border-solid border-2 px-8">
-            <button onClick={() => deleteReview(review.id, headphoneId)}>
+            <button onClick={() => deleteReview(review.id, headphone.id)}>
               X Delete
             </button>
+            <Link
+              to={{
+                pathname: `/reviews/edit`,
+                state: { headphone, review }
+              }}
+            >
+              <Button btnText="Edit Review" />
+            </Link>
           </div>
         </div>
         <div>{review.body}</div>
@@ -25,4 +35,4 @@ class Review extends Component {
   }
 }
 
-export default connect(null, { deleteReview })(Review);
+export default connect(null, { editReview, deleteReview })(Review);

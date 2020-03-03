@@ -10,13 +10,11 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def create
-    review = Review.create!(review_params)
-    render json: review
+    render json: Review.create!(review_params)
   end
 
   def update
-    @review.update!(review_params)
-    render json: @review
+    render json: @review.update!(review_params)
   end
 
   def destroy
@@ -31,6 +29,11 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:title, :body, :rating)
+    params.require(:review).permit(
+      :title,
+      :body,
+      :rating,
+      :headphone_id,
+    )
   end
 end

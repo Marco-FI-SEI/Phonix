@@ -56,7 +56,9 @@ export const forumReducer = (state = initialState, {
         id: uuid(),
         title: payload.title,
         body: payload.body,
-        headphoneId: payload.headphoneId
+        rating: payload.rating,
+        headphoneId: payload.headphoneId,
+        userId: payload.userId
       };
 
       return {

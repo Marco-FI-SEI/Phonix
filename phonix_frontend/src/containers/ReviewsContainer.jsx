@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
 
 import { fetchReviews } from "../actions/reviewActions";
 import ReviewList from '../components/reviews/ReviewList';
 import { SearchBar } from "../components/headphones/SearchBar";
-import { Button } from "../components/common/Button";
-
-
 
 class ReviewsContainer extends Component {
   componentDidMount() {
@@ -19,7 +15,7 @@ class ReviewsContainer extends Component {
     const { reviews, headphone } = this.props;
 
     return (
-      <div className="h-full">
+      <div className="h-full container mx-auto">
         <h2>Reviews</h2>
         <div className="sticky top-0 h-10%">
           <div className="flex items-center px-1 w-2/6">
@@ -30,7 +26,7 @@ class ReviewsContainer extends Component {
           </div>
         </div>
         <div className="h-90%" style={{ overflowY: `scroll` }}>
-          <ReviewList reviews={reviews} headphoneId={headphone.id} />
+          <ReviewList reviews={reviews} headphone={headphone} />
           {/* Filtered Reviews */}
         </div>
       </div>
@@ -45,7 +41,3 @@ const mapStateToProps = ({forum}) => {
 }
 
 export default connect(mapStateToProps, { fetchReviews })(ReviewsContainer);
-
-{/* <div className="h-full" style={{ overflowY: `scroll` }}>
-  <ReviewList reviews={reviews} headphoneId={headphone.id} />
-</div> */}
