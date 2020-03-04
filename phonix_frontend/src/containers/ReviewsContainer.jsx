@@ -26,10 +26,13 @@ class ReviewsContainer extends Component {
   render() {
     const { reviews, headphone } = this.props;
     const query = this.state.searchField;
+    let filteredReviews = [];
 
-    const filteredReviews = reviews.filter(review => {
-      return review.title.toLowerCase().includes(query.toLowerCase());
-    });
+    if (reviews.length > 0) {
+      filteredReviews = reviews.filter(review => {
+        return review.title.toLowerCase().includes(query.toLowerCase());
+      });
+    }
 
     return (
       <div className="h-full px-8 py-8">
