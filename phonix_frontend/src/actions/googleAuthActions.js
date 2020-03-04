@@ -2,6 +2,7 @@ import {
   AUTH_ACTIONS
 } from "../config/constants";
 
+
 const {
   SIGN_IN,
   SIGN_OUT,
@@ -35,13 +36,14 @@ const validateTokenError = error => {
   return {
     type: VALIDATE_TOKEN_ERROR,
     payload: "Error",
-    error: error
+    tokenValidationError: error
   }
 }
 
 const signOut = () => {
   return {
-    type: SIGN_OUT
+    type: SIGN_OUT,
+    payload: "Out"
   };
 };
 

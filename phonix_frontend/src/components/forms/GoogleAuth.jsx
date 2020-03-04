@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { signIn, signOut } from "../../actions/googleAuthActions";
-import validateGoogleIdToken from "../../adapters/validateGoogleIdToken";
+import validateGoogleIdToken from "../../adapters/googleAuthAdapter";
 
 class GoogleAuth extends Component {
   componentDidMount() {
@@ -42,7 +42,6 @@ class GoogleAuth extends Component {
 
   handleSignOut = () => {
     this.auth.signOut();
-    this.checkAuthStatus(this.props.isSignedIn);
   };
 
   renderAuthButton = () => {

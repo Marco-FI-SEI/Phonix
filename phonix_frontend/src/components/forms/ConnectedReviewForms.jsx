@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
 import ReviewForm from "./ReviewForm";
 
-import { addReview, editReview} from "../../actions/reviewActions";
+import { newReview, updateReview} from "../../adapters/reviewsAdapter";
 
 const CreateReviewForm = props => <ReviewForm {...props} mode="create" />;
 const EditReviewForm = props => <ReviewForm {...props} mode="edit" />;
@@ -37,9 +37,10 @@ const mapStateToProps = (_, ownProps) => {
   }
 
   return {
-    initialValues: configuredReview
+    initialValues: configuredReview,
+    review
   };
 }
 
-export const ConnectedCreateReviewForm = connect(null, { addReview })(InitialCreateReviewForm);
-export const ConnectedEditReviewForm = connect(mapStateToProps, { editReview })(InitialEditReviewForm);
+export const ConnectedCreateReviewForm = connect(null, { newReview })(InitialCreateReviewForm);
+export const ConnectedEditReviewForm = connect(mapStateToProps, { updateReview })(InitialEditReviewForm);

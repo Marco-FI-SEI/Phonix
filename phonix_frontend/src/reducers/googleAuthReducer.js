@@ -14,41 +14,39 @@ const {
 } = AUTH_ACTIONS;
 
 
-export function authReducer(state = initialState, {
+export function authReducer(state = initialState.auth, {
   type,
   payload,
   error
 }) {
   switch (type) {
     case SIGN_IN:
+      console.log(state)
       return {
         ...state,
         isSignedIn: true,
         userId: payload
       };
     case SIGN_OUT:
-      return {
-        ...state,
-        isSignedIn: false,
-        userId: null
-      };
+      return state;
+      
     case VALIDATE_TOKEN_PENDING:
       return {
         ...state,
-        pending: true,
+        tokenValidationPending: true,
         idToken: payload
       };
     case VALIDATE_TOKEN_SUCCESS:
       return {
         ...state,
-        pending: false,
-        message: payload
+        tokenValidationPending: false,
+        tokenValidationMessage: payload
       };
     case VALIDATE_TOKEN_ERROR:
       return {
         ...state,
-        pending: false,
-        message: payload,
+        tokenValidationPending: false,
+        tokenValidationMessage: payload,
         error: error
       };
     default:

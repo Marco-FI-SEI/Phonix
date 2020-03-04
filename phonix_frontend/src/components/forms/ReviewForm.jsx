@@ -5,27 +5,23 @@ import { TextArea } from "./TextArea";
 import { InputField } from "./InputField";
 import { SelectField } from "./SelectField";
 
-
 class ReviewForm extends Component {
   onSubmit = formValues => {
-    const { headphone } = this.props.location.state;
+    const { headphone, review } = this.props.location.state;
+    const { title, body, rating } = formValues;
+    const headphone_id = headphone.id.toString();
 
     const reviewData = {
-      title: formValues.title,
-      body: formValues.body,
-      rating: formValues.rating.value,
-      headphone_id: headphone.id.toString()
+      title,
+      body,
+      rating: rating.value,
+      headphone_id
     };
 
-    // console.log(this.props)
-
     if (this.props.mode === "create") {
-      console.log("hi")
-      this.props.addReview(reviewData);
+      this.props.newReview(reviewData);
     } else {
-      console.log("hi2");
-
-      this.props.editReview(reviewData);
+      this.props.updateReview(reviewData, review.id);
     }
   };
 
@@ -56,46 +52,42 @@ class ReviewForm extends Component {
     ];
 
     return (
-      <div>
-        <div>
-          <h1>
-            {
-              mode === "create"
+      <div className="h-full">
+        <div className="h-20% text-center pt-20">
+          <h1 className="text-4xl">
+            {mode === "create"
               ? `Leave a review for the ${headphone.manufacturer} ${headphone.model}!`
-              : "Edit your review!"
-            }
+              : "Edit your review!"}
           </h1>
         </div>
-        <div className="container mx-auto w-1/12">
-          <form
-            onSubmit={handleSubmit(this.onSubmit)}
-            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-          >
-            <div className="mb-4">
-              <Field name="title" component={InputField} label="Title" />
-            </div>
-            <div className="mb-6">
-              <Field name="body" component={TextArea} label="Body" />
-            </div>
-            <div className="mb-4">
-              <Field
-                name="rating"
-                component={SelectField}
-                label="Rating"
-                options={ratingOptions}
-              />
-            </div>
-            <div>
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="submit"
-                disabled={pristine || submitting}
-              >
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
+        <form
+          onSubmit={handleSubmit(this.onSubmit)}
+          className="bg-white shadow-md rounded h-50% px-8 pt-6 pb-8 mb-4 container mx-auto"
+        >
+          <div className="mb-4 w-1/2">
+            <Field name="title" component={InputField} label="Title" />
+          </div>
+          <div className="mb-6">
+            <Field name="body" component={TextArea} label="Body" />
+          </div>
+          <div className="mb-4 w-1/4">
+            <Field
+              name="rating"
+              component={SelectField}
+              label="Rating"
+              options={ratingOptions}
+            />
+          </div>
+          <div className="relative">
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline absolute right-0"
+              type="submit"
+              disabled={pristine || submitting}
+            >
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
     );
   }

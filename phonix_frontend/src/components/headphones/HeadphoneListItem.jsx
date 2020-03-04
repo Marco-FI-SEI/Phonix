@@ -8,7 +8,7 @@ class HeadphoneListItem extends Component {
     const { headphone } = this.props;
     return (
       <li
-        className="block border-solid border-2 border-red-400"
+        className="block border-solid border border-gray-100"
         key={headphone.id}
       >
         <div className="grid grid-cols-2">
@@ -25,9 +25,12 @@ class HeadphoneListItem extends Component {
             </div>
           </Link>
           <div className="flex flex-row-reverse items-center px-8">
-            <Link to={{
-              pathname: `/reviews/new`,
-              state: { headphone: headphone }}}>
+            <Link
+              to={{
+                pathname: `/reviews/new`,
+                state: { headphone: headphone }
+              }}
+            >
               <Button btnText="+ Review" />
             </Link>
           </div>

@@ -1,16 +1,20 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Router } from "react-router-dom";
 import { Routes } from "./config/Routes";
+import history from "./history";
 
 import Header from "./components/Header";
 
 class App extends Component {
   render() {
     return (
-      <div className="h-screen mx-auto min-w-0 max-w-screen-xl" >
-        <Router>
+      <div
+        className="h-screen mx-auto min-w-0 max-w-screen-xl"
+        style={{ overflowY: `hidden` }}
+      >
+        <Router history={history}>
           <Header />
-          <main className="h-90%">
+          <main className="h-90% border border-solid">
             <Routes />
           </main>
         </Router>
@@ -20,5 +24,3 @@ class App extends Component {
 }
 
 export default App;
-
-// style={{overflowY: `hidden`}}

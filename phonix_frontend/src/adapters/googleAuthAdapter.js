@@ -8,6 +8,9 @@ import {
   validateTokenError
 } from "../actions/googleAuthActions";
 
+import history from "../history";
+
+
 const api = new ApiRequest();
 
 const validateGoogleIdToken = idToken => dispatch => {
@@ -17,6 +20,7 @@ const validateGoogleIdToken = idToken => dispatch => {
     .then(response => {
       if (response.message === "SUCCESS") {
         dispatch(validateTokenSuccess());
+        history.push("/headphones");
       } else {
         dispatch(validateTokenError(response));
       }

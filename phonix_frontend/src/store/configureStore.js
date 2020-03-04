@@ -4,18 +4,17 @@ import {
   applyMiddleware,
   compose
 } from 'redux';
-import { reducer as formReducer } from 'redux-form';
-import { authReducer } from "../reducers/googleAuthReducer";
 import thunkMiddleware from 'redux-thunk';
-
-import {
-  forumReducer as forum
-} from "../reducers/forumReducer";
+import { reducer as formReducer } from 'redux-form';
+import { authReducer as googleAuth } from "../reducers/googleAuthReducer";
+import { reviewReducer as review } from "../reducers/reviewReducer";
+import { headphoneReducer as headphone } from "../reducers/headphoneReducer";
 
 const configureStore = () => {
   const rootReducer = combineReducers({
-    forum,
-    googleAuth: authReducer,
+    review,
+    headphone,
+    googleAuth,
     form: formReducer
   });
 

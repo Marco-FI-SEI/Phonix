@@ -15,7 +15,7 @@ class HeadphoneList extends Component {
     });
     return (
       <Fragment>
-        <ul className="block border-solid border-2">{headphoneList}</ul>
+        <ul className="block">{headphoneList}</ul>
       </Fragment>
     )
   }

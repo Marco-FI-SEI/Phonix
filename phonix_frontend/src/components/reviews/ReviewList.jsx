@@ -4,7 +4,6 @@ import Review from "./Review";
 
 class ReviewList extends Component {
   render() {
-
     const { reviews, headphone } = this.props;
 
     const headphoneReviews = reviews.map(review => {
@@ -13,11 +12,7 @@ class ReviewList extends Component {
       );
     });
 
-    return (
-      <ul>
-        { headphoneReviews }
-      </ul>
-    );
+    return <ul>{headphoneReviews}</ul>;
   }
 };
 

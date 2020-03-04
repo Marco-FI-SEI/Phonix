@@ -3,11 +3,11 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
 import { InputField as input } from "./InputField";
-import { addHeadphone } from "../../actions/headphoneActions";
+import { newHeadphone } from "../../adapters/headphonesAdapter";
 
 class HeadphoneForm extends Component {
   onSubmit = formValues => {
-    this.props.addHeadphone(formValues);
+    this.props.newHeadphone(formValues);
   };
 
   render() {
@@ -40,6 +40,6 @@ class HeadphoneForm extends Component {
 }
 
 export default compose(
-  connect(null, { addHeadphone }),
+  connect(null, { newHeadphone }),
   reduxForm({ form: "headphone" })
 )(HeadphoneForm);

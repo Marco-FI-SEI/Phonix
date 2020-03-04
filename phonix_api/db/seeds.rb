@@ -19,7 +19,6 @@
     title: Faker::ProgrammingLanguage.name,
     body: Faker::Lorem.paragraphs(number: 3),
     rating: Faker::Number.between(from: 1, to: 5),
-    headphone_id: Faker::Number.between(from: 20, to: 30),
-    user_id: Faker::Number.between(from: 1, to: 15)
+    headphone_id: Faker::Number.between(from: 1, to: 5),
   )
 end
